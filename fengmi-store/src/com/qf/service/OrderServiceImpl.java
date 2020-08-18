@@ -1,7 +1,7 @@
 package com.qf.service;
 
 import com.qf.dao.OrderDao;
-import com.qf.dao.OrderDaoImpl;
+import com.qf.dao.impl.OrderDaoImpl;
 import com.qf.entity.Order;
 
 import java.util.List;
