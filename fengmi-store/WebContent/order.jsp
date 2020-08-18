@@ -6,12 +6,44 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>订单预览页面</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        /*$(function () {
+            $.post({
+                url: "order",
+                dataType: "json",
+                data: "",
+                success: function (data) {
+                    for (let i = 0; i < data.length; i++) {
+                        let item = "<tr><td>" + data[i].id + "</td><td>" + data[i].oid + "</td><td>" + data[i].gid + "</td></tr>";
+                        $("#list").append(item);
+                    }
+                    // fun();
+                }
+            });
+        });*/
+
+        /*function fun() {
+            let tr = $("#list tr");
+            for (let i = 1; i < tr.length; i++) {
+                tr[i].id = "tr" + i;
+            }
+            let delList = $("#list tr td input");
+            for (let i = 0; i < delList.length; i++) {
+                delList[i].setAttribute("did", i + 1);
+            }
+            delList.click(function () {
+                let did = $(this).attr("did");
+                $("#tr" + did).remove();
+            });
+        }*/
+    </script>
 
 </head>
 <body style="background-color:#f5f5f5">
@@ -22,7 +54,7 @@
     <div class="row" style="margin-top: 40px;">
         <input type="hidden" id="t1" value="${type }">
         <div class="col-md-10 col-md-offset-1">
-            <table class="table table-bordered table-striped table-hover">
+            <table id="list" class="table table-bordered table-striped table-hover">
                 <tr>
                     <th>序号</th>
                     <th>商品名称</th>
@@ -33,12 +65,13 @@
                 </tr>
 
                 <tr>
-                    <th>XXX</th>
+                    <th>${orders[0].money }</th>
                     <th>XXX</th>
                     <th>XXX</th>
                     <th>XXX</th>
                     <th>XXX</th>
                 </tr>
+
 
                 <tr>
                     <td colspan="5">

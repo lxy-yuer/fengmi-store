@@ -3,6 +3,7 @@ package com.qf.dao;
 import com.qf.entity.Order;
 
 import java.util.List;
+import java.util.Map;
 
 public interface OrderDao {
     /**
@@ -44,5 +45,7 @@ public interface OrderDao {
      * @return -
      */
     Order getOrderById(int id);
+
+    Map<String, Object> getOrderMapByUid(int uid);
 
 }

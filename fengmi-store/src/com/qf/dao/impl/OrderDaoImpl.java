@@ -3,8 +3,11 @@ package com.qf.dao.impl;
 import com.qf.dao.OrderDao;
 import com.qf.entity.Order;
 import com.qf.util.DBUtils;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class OrderDaoImpl implements OrderDao {
 
@@ -39,6 +42,12 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public Order getOrderById(int id) {
         return dbUtils.querySingle("select * from t_order where id = ?", Order.class, id);
+    }
+
+    @Override
+    public Map<String, Object> getOrderMapByUid(int uid) {
+        Map<String, Object> map = new HashMap<>();
+        return null;
     }
 
 }
