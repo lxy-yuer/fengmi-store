@@ -1,10 +1,11 @@
-package com.qf.service;
+package com.qf.service.impl;
 
 import java.util.List;
 
 import com.qf.dao.GoodsDao;
-import com.qf.dao.GoodsDaoImpl;
+import com.qf.dao.impl.GoodsDaoImpl;
 import com.qf.entity.Goods;
+import com.qf.service.GoodsService;
 
 /** 
  * 

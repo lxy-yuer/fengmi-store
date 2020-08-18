@@ -1,4 +1,4 @@
-package com.qf.dao;
+package com.qf.dao.impl;
 
 import java.util.List;
 
