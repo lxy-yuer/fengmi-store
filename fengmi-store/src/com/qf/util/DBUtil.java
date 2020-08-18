@@ -16,13 +16,12 @@ import com.alibaba.druid.pool.DruidDataSourceFactory;
 
 public class DBUtil<T> {
 	private static DataSource ds;
-	private static DruidDataSourceFactory df = new DruidDataSourceFactory();
-	
+
 	static {
 		Properties prop = new Properties();
 		try {
 			prop.load(DBUtil.class.getResourceAsStream("druid.properties"));
-			ds = df.createDataSource(prop);
+			ds = DruidDataSourceFactory.createDataSource(prop);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -31,14 +30,14 @@ public class DBUtil<T> {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	/**
 	 * 更新数据
+	 * 
 	 * @return
-	 * @throws SQLException 
+	 * @throws SQLException
 	 */
-	public int updateData(String sql,Object...params) {
+	public int updateData(String sql, Object... params) {
 		QueryRunner qr = new QueryRunner(ds);
 		int i = 0;
 		try {
@@ -49,17 +48,19 @@ public class DBUtil<T> {
 		}
 		return i;
 	}
+
 	/**
 	 * 查询单条数据
+	 * 
 	 * @param sql
 	 * @param clazz
 	 * @param params
 	 * @return
 	 */
-	public T querySingle(String sql,Class clazz,Object... params) {
+	public T querySingle(String sql, Class clazz, Object... params) {
 		QueryRunner qr = new QueryRunner(ds);
 		try {
-			return qr.query(sql, new BeanHandler<T>(clazz),params);
+			return qr.query(sql, new BeanHandler<T>(clazz), params);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -69,39 +70,41 @@ public class DBUtil<T> {
 
 	/**
 	 * 查询集合
+	 * 
 	 * @param sql
 	 * @param clazz
 	 * @param params
 	 * @return
 	 */
-	public List<T> queryList(String sql,Class clazz,Object... params){
+	public List<T> queryList(String sql, Class clazz, Object... params) {
 		QueryRunner qr = new QueryRunner(ds);
 		try {
-			return qr.query(sql, new BeanListHandler<T>(clazz),params);
+			return qr.query(sql, new BeanListHandler<T>(clazz), params);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
+
 	/**
 	 * 查询统计单值
+	 * 
 	 * @param sql
 	 * @param params
 	 * @return
 	 */
-	public int queryCount(String sql,Object...params) {
+	public int queryCount(String sql, Object... params) {
 		QueryRunner qr = new QueryRunner(ds);
 		try {
-			Long count = qr.query(sql, new ScalarHandler<Long>(),params);
+			Long count = qr.query(sql, new ScalarHandler<Long>(), params);
 			return Integer.parseInt(count.toString());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return 0;
-		
+
 	}
-	
-	
+
 }
