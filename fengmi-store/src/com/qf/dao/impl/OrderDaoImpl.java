@@ -3,7 +3,6 @@ package com.qf.dao.impl;
 import com.qf.dao.OrderDao;
 import com.qf.entity.Order;
 import com.qf.util.DBUtils;
-import org.apache.commons.dbutils.handlers.BeanHandler;
 
 import java.util.HashMap;
 import java.util.List;
