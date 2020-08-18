@@ -57,7 +57,7 @@ public class DBUtil<T> {
 	 * @param params
 	 * @return
 	 */
-	public T querySingle(String sql, Class clazz, Object... params) {
+	public T querySingle(String sql, Class<T> clazz, Object... params) {
 		QueryRunner qr = new QueryRunner(ds);
 		try {
 			return qr.query(sql, new BeanHandler<T>(clazz), params);
@@ -76,7 +76,7 @@ public class DBUtil<T> {
 	 * @param params
 	 * @return
 	 */
-	public List<T> queryList(String sql, Class clazz, Object... params) {
+	public List<T> queryList(String sql, Class<T> clazz, Object... params) {
 		QueryRunner qr = new QueryRunner(ds);
 		try {
 			return qr.query(sql, new BeanListHandler<T>(clazz), params);
