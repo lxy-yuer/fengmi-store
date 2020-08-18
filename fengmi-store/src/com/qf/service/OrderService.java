@@ -1,10 +1,10 @@
-package com.qf.dao;
+package com.qf.service;
 
 import com.qf.entity.Order;
 
 import java.util.List;
 
-public interface OrderDao {
+public interface OrderService {
     /**
      * 添加订单
      *
@@ -44,5 +44,4 @@ public interface OrderDao {
      * @return -
      */
     Order getOrderById(int id);
-
 }
