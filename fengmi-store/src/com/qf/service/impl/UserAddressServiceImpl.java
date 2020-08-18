@@ -1,14 +1,15 @@
-package com.qf.dao.impl;
+package com.qf.service.impl;
 
 import com.qf.dao.UserAddressDao;
+import com.qf.dao.impl.UserAddressDaoImpl;
 import com.qf.entity.UserAddress;
-import com.qf.util.DBUtils;
+import com.qf.service.UserAddressService;
 
 import java.util.List;
 
-public class UserAddressDaoImpl implements UserAddressDao {
+public class UserAddressServiceImpl implements UserAddressService {
 
-    DBUtils<UserAddress> dbUtils = new DBUtils<>();
+    UserAddressDao userAddressDao = new UserAddressDaoImpl();
 
     /**
      * 添加地址
@@ -18,9 +19,7 @@ public class UserAddressDaoImpl implements UserAddressDao {
      */
     @Override
     public int addAddress(UserAddress userAddress) {
-        return dbUtils.updateData("insert into t_useraddress(uid, address_detail) values(?,?)",
-                userAddress.getUid(),
-                userAddress.getAddress_detail());
+        return userAddressDao.addAddress(userAddress);
     }
 
     /**
@@ -31,9 +30,7 @@ public class UserAddressDaoImpl implements UserAddressDao {
      */
     @Override
     public int updateAddress(UserAddress userAddress) {
-        return dbUtils.updateData("update t_useraddress set uid = ?, address_detail = ?",
-                userAddress.getUid(),
-                userAddress.getAddress_detail());
+        return userAddressDao.updateAddress(userAddress);
     }
 
     /**
@@ -44,7 +41,7 @@ public class UserAddressDaoImpl implements UserAddressDao {
      */
     @Override
     public int deleteAddress(int id) {
-        return dbUtils.updateData("delete from t_useraddress where id = ?", id);
+        return userAddressDao.deleteAddress(id);
     }
 
     /**
@@ -55,7 +52,7 @@ public class UserAddressDaoImpl implements UserAddressDao {
      */
     @Override
     public List<UserAddress> selectAddressByUid(int uid) {
-        return dbUtils.queryList("select * from t_useraddress where uid = ?", UserAddress.class, uid);
+        return userAddressDao.selectAddressByUid(uid);
     }
 
     /**
@@ -66,6 +63,6 @@ public class UserAddressDaoImpl implements UserAddressDao {
      */
     @Override
     public UserAddress selectAddress(int id) {
-        return dbUtils.querySingle("select * from t_useraddress where id = ?", UserAddress.class, id);
+        return userAddressDao.selectAddress(id);
     }
 }

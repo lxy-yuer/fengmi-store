@@ -2,92 +2,99 @@ package com.qf.entity;
 
 /**
  * 订单
+ *
  * @author liuxiangyu
- * 
  */
 public class Order {
-	private int id;
-	private int uid;
-	private int uaid;
-	private String createTime;
-	private double maney;
-	private int flag;
+    private int id;
+    private int uid;
+    private int uaid;
+    private String createTime;
+    private double maney;
+    private int flag = 1;
 
-	public Order(int id, int uid, int uaid, String createTime, double maney, int flag) {
-		super();
-		this.id = id;
-		this.uid = uid;
-		this.uaid = uaid;
-		this.createTime = createTime;
-		this.maney = maney;
-		this.flag = flag;
-	}
+    public Order(int uid, int uaid, String createTime, double maney) {
+        this.uid = uid;
+        this.uaid = uaid;
+        this.createTime = createTime;
+        this.maney = maney;
+    }
 
-	public Order(int uid, int uaid, String createTime, double maney, int flag) {
-		super();
-		this.uid = uid;
-		this.uaid = uaid;
-		this.createTime = createTime;
-		this.maney = maney;
-		this.flag = flag;
-	}
+    public Order(int id, int uid, int uaid, String createTime, double maney, int flag) {
+        super();
+        this.id = id;
+        this.uid = uid;
+        this.uaid = uaid;
+        this.createTime = createTime;
+        this.maney = maney;
+        this.flag = flag;
+    }
 
-	public Order() {
-		super();
-	}
+    public Order(int uid, int uaid, String createTime, double maney, int flag) {
+        super();
+        this.uid = uid;
+        this.uaid = uaid;
+        this.createTime = createTime;
+        this.maney = maney;
+        this.flag = flag;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public Order() {
+        super();
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public int getUid() {
-		return uid;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setUid(int uid) {
-		this.uid = uid;
-	}
+    public int getUid() {
+        return uid;
+    }
 
-	public int getUaid() {
-		return uaid;
-	}
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
 
-	public void setUaid(int uaid) {
-		this.uaid = uaid;
-	}
+    public int getUaid() {
+        return uaid;
+    }
 
-	public String getCreateTime() {
-		return createTime;
-	}
+    public void setUaid(int uaid) {
+        this.uaid = uaid;
+    }
 
-	public void setCreateTime(String createTime) {
-		this.createTime = createTime;
-	}
+    public String getCreateTime() {
+        return createTime;
+    }
 
-	public double getManey() {
-		return maney;
-	}
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
 
-	public void setManey(double maney) {
-		this.maney = maney;
-	}
+    public double getManey() {
+        return maney;
+    }
 
-	public int getFlag() {
-		return flag;
-	}
+    public void setManey(double maney) {
+        this.maney = maney;
+    }
 
-	public void setFlag(int flag) {
-		this.flag = flag;
-	}
+    public int getFlag() {
+        return flag;
+    }
 
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", uid=" + uid + ", uaid=" + uaid + ", createTime=" + createTime + ", maney=" + maney
-				+ ", flag=" + flag + "]";
-	}
+    public void setFlag(int flag) {
+        this.flag = flag;
+    }
+
+    @Override
+    public String toString() {
+        return "Order [id=" + id + ", uid=" + uid + ", uaid=" + uaid + ", createTime=" + createTime + ", maney=" + maney
+                + ", flag=" + flag + "]";
+    }
 
 }

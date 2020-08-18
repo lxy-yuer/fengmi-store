@@ -1,0 +1,38 @@
+package com.qf.service.impl;
+
+import com.qf.dao.OrderDetailDao;
+import com.qf.dao.impl.OrderDetailDaoImpl;
+import com.qf.entity.OrderDetail;
+import com.qf.service.OrderDetailService;
+
+import java.util.List;
+
+public class OrderDetailServiceImpl implements OrderDetailService {
+
+    OrderDetailDao orderDetailDao = new OrderDetailDaoImpl();
+
+    @Override
+    public int addOrderDetail(OrderDetail orderDetail) {
+        return orderDetailDao.addOrderDetail(orderDetail);
+    }
+
+    @Override
+    public int updateOrderDetail(OrderDetail orderDetail) {
+        return orderDetailDao.addOrderDetail(orderDetail);
+    }
+
+    @Override
+    public int deleteOrderDetail(int id) {
+        return orderDetailDao.deleteOrderDetail(id);
+    }
+
+    @Override
+    public List<OrderDetail> selectOrderDetail(int oid) {
+        return orderDetailDao.selectOrderDetail(oid);
+    }
+
+    @Override
+    public OrderDetail selectOrderDetailById(int id) {
+        return orderDetailDao.selectOrderDetailById(id);
+    }
+}

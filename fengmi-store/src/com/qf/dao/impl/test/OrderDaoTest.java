@@ -1,6 +1,7 @@
-package com.qf.dao.impl;
+package com.qf.dao.impl.test;
 
 import com.qf.dao.OrderDao;
+import com.qf.dao.impl.OrderDaoImpl;
 import com.qf.entity.Order;
 import com.qf.util.DateUtils;
 import org.junit.Test;

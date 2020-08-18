@@ -1,8 +1,9 @@
-package com.qf.service;
+package com.qf.service.impl;
 
 import com.qf.dao.OrderDao;
 import com.qf.dao.impl.OrderDaoImpl;
 import com.qf.entity.Order;
+import com.qf.service.OrderService;
 
 import java.util.List;
 
@@ -18,7 +19,11 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public int addOrder(Order order) {
-        return 0;
+        if (order == null) {
+            return -1;
+        }
+
+        return orderDao.addOrder(order);
     }
 
     /**
@@ -29,7 +34,7 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public int updateOrder(Order order) {
-        return 0;
+        return orderDao.updateOrder(order);
     }
 
     /**
@@ -40,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public int deleteOrder(int id) {
-        return 0;
+        return orderDao.deleteOrder(id);
     }
 
     /**
@@ -51,7 +56,7 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public List<Order> getOrderListByUid(int uid) {
-        return null;
+        return orderDao.getOrderListByUid(uid);
     }
 
     /**
@@ -62,6 +67,6 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public Order getOrderById(int id) {
-        return null;
+        return orderDao.getOrderById(id);
     }
 }
