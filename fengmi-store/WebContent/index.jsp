@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="UTF-8">
 <title>锋米之家</title>
 <link rel="stylesheet" type="text/css" href="css/login2.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
 			<!-- 轮播（Carousel）项目 -->
 			<div class="carousel-inner">
 				<div class="item active">
-					<img src="image/banner2.jpg" alt="First slide">
+					<img src="image/banner4.jpg" alt="First slide">
 				</div>
 				<div class="item">
 					<img src="image/banner2.jpg" alt="Second slide">
@@ -47,48 +47,58 @@
 		<!-- <img src="image/banner2.jpg" width="1230" height="400" />  -->
 	</div>
 	<div id="forth">
-		<span> <a href=""><img src="image/hjh_01.gif" /></a> <a
-			href=""><img src="image/hjh_02.gif" /></a> <a href=""><img
-				src="image/hjh_03.gif" /></a> <a href=""><img
-				src="image/hjh_04.gif" /></a> <a href=""><img
-				src="image/hjh_05.gif" /></a> <a href=""><img
-				src="image/hjh_06.gif" /></a>
-		</span> <a href="" id="a_left"><img src="image/hongmi4x.png" width="316"
-			height="170" /></a> <a href="" id="a_left"><img
-			src="image/xiaomi5.jpg" width="316" height="170" /></a> <a href=""
-			id="a_left"><img src="image/pinghengche.jpg" width="316"
-			height="170" /></a>
+		<span> 
+			<a href=""><img src="image/hjh_01.gif" /></a> 
+			<a href=""><img src="image/hjh_02.gif" /></a> 
+			<a href=""><img src="image/hjh_03.gif" /></a> 
+			<a href=""><img src="image/hjh_04.gif" /></a> 
+			<a href=""><img src="image/hjh_05.gif" /></a> 
+			<a href=""><img src="image/hjh_06.gif" /></a>
+		</span> 
+		<a href="" id="a_left"><img src="image/hongmi4x.png" width="316" height="170" /></a> 
+		<a href="" id="a_left"><img src="image/xiaomi5.jpg" width="316" height="170" /></a> 
+		<a href="" id="a_left"><img src="image/pinghengche.jpg" width="316" height="170" /></a>
 	</div>
 	<div id="fifth">
 		<span id="fif_text">明星单品</span>
 	</div>
 	<div id="sixth">
-		<span style="margin-left: 0px; border-top: #ffa500 1px solid">
-			<a href="" id="siximg"><img src="image/pinpai1.png" width="234"
-				height="234" /></a> <a href="" id="na">小米MIX</a>
+		<span style="margin-left: 0px; border-top: #ff0000 1px solid">
+			<a href="" id="siximg"><img src="image/pinpai1.png" width="234" height="234" /></a> 
+			<a href="" id="na">小米MIX</a>
 			<p id="chip">5月9日-21日享花呗12期分期免息</p>
 			<p id="pri">3499元起</p>
-		</span> <span style="border-top: #008000 1px solid"> <a href=""
-			id="siximg"><img src="image/pinpai2.png" width="234" height="234" /></a>
+		</span>
+		<!-- <span style="margin-left: 0px; border-top: #ffa500 1px solid">
+			<a href="" id="siximg"><img src="image/pinpai1.png" width="234" height="234" /></a> 
+			<a href="" id="na">小米MIX</a>
+			<p id="chip">5月9日-21日享花呗12期分期免息</p>
+			<p id="pri">3499元起</p>
+		</span> 
+		<span style="border-top: #008000 1px solid"> 
+			<a href="" id="siximg"><img src="image/pinpai2.png" width="234" height="234" /></a>
 			<a href="" id="na">华为P10</a>
 			<p id="chip">6月9日-21日享12期分期免息</p>
 			<p id="pri">5499元起</p>
-		</span> <span style="border-top: #0000ff 1px solid"> <a href=""
+		</span> 
+		<span style="border-top: #0000ff 1px solid"> <a href=""
 			id="siximg"><img src="image/pinpai3.png" width="234" height="234" /></a>
 			<a href="" id="na">iphone8</a>
 			<p id="chip">1月9日-21日享招商银行12期分期免息</p>
 			<p id="pri">5499元起</p>
-		</span> <span style="border-top: #ff0000 1px solid"> <a href=""
+		</span> 
+		<span style="border-top: #ff0000 1px solid"> <a href=""
 			id="siximg"><img src="image/pinpai4.png" width="234" height="234" /></a>
 			<a href="" id="na">乐视电视</a>
 			<p id="chip">4月9日-12日享花呗12期分期免息</p>
 			<p id="pri">4499元起</p>
-		</span> <span style="border-top: #008080 1px solid"> <a href=""
+		</span> 
+		<span style="border-top: #008080 1px solid"> <a href=""
 			id="siximg"><img src="image/pinpai5.png" width="234" height="234" /></a>
 			<a href="" id="na">华为笔记本</a>
 			<p id="chip">5月9日-21日享花呗12期分期免息</p>
 			<p id="pri">7499元起</p>
-		</span>
+		</span> -->
 	</div>
 </body>
 </html>

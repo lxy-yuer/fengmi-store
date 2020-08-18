@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/login2.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery.min.js"></script>
