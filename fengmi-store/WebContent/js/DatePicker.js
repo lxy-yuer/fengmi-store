@@ -596,4 +596,3 @@ Calendar.prototype.setDisplayStyle = function(tagName, style) {
 }
 
 document.write('<div id="calendarPanel" style="position:absolute;visibility:hidden;z-index:9999;background-color:#FFFFFF;font-size:12px;width:20px;">');
-document.write("<iframe id='calendarIframe' scrolling='no' frameborder='0' width='100%' height='100%'></iframe></div>");
