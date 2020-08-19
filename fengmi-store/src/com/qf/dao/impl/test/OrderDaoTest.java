@@ -2,29 +2,20 @@ package com.qf.dao.impl.test;
 
 import com.qf.dao.OrderDao;
 import com.qf.dao.impl.OrderDaoImpl;
-import com.qf.entity.Order;
-import com.qf.util.DateUtils;
+
+import java.util.List;
+import java.util.Map;
+
 //import org.junit.Test;
 
-import java.util.Date;
-import java.util.List;
-
 public class OrderDaoTest {
-    OrderDao dao = new OrderDaoImpl();
 
-//    @Test
-    public void testAdd() {
 
-        Order order = new Order(1, 3, 2, DateUtils.toStringDate(new Date()), 1000, 1);
-        System.out.println(order);
-        dao.addOrder(order);
-    }
+    public static void main(String[] args) {
+        OrderDaoImpl dao = new OrderDaoImpl();
+        //List<Map<String, Object>> orderListDetail = dao.getOrderListDetail(1, 5);
+        //System.out.println(orderListDetail);
 
-//    @Test
-    public void testSelectList() {
-
-        List<Order> orderListByUid = dao.getOrderListByUid(3);
-        System.out.println(orderListByUid.get(0));
     }
 
 

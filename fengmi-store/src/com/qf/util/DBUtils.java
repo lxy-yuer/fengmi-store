@@ -24,7 +24,7 @@ public class DBUtils<T> {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-	}
+    }
 
     /**
      * 更新数据
@@ -102,7 +102,7 @@ public class DBUtils<T> {
 
     }
 
-    public Connection getConnection(){
+    public Connection getConnection() {
         try {
             return ds.getConnection();
         } catch (SQLException e) {
@@ -111,4 +111,7 @@ public class DBUtils<T> {
         return null;
     }
 
+    public DataSource getDS() {
+        return ds;
+    }
 }

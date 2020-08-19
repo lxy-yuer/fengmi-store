@@ -44,6 +44,9 @@
             });
         }*/
     </script>
+    <%
+        double lastMoney = 0;
+    %>
 
 </head>
 <body style="background-color:#f5f5f5">
@@ -65,12 +68,26 @@
                 </tr>
 
                 <tr>
-                    <th>${orders[0].money }</th>
-                    <th>XXX</th>
-                    <th>XXX</th>
-                    <th>XXX</th>
-                    <th>XXX</th>
+                    <th>${1 }</th>
+                    <th>${orders[0].value.goodsName }</th>
+                    <th>${orders[0].value.price }</th>
+                    <th>${orders[0].value.num }</th>
+                    <th>${orders[0].value.goodsPrice }</th>
                 </tr>
+
+                <c:forEach items="${orders }" varStatus="status" var="order" begin="0">
+
+                    <tr>
+                        <th>${status.index + 2 }</th>
+                        <th>${order.good.name }</th>
+                        <th>${order.good.price }</th>
+                        <th>${order.cartDetail.num }</th>
+                        <th>${order.good.price * order.cartDetail.num }</th>
+                    </tr>
+
+
+
+                </c:forEach>
 
 
                 <tr>
@@ -78,7 +95,7 @@
                         <h5>收货地址</h5>
                         <select id="address" style="width:60%" class="form-control">
 
-                            <option value="${a.id}">XXX&nbsp;&nbsp;XXX&nbsp;&nbsp;XXX</option>
+                            <option value="${a.id}">${order[0].addressDetail }</option>
                             <option value="${a.id}">XXX&nbsp;&nbsp;XXX&nbsp;&nbsp;XXX</option>
                             <option value="${a.id}">XXX&nbsp;&nbsp;XXX&nbsp;&nbsp;XXX</option>
 

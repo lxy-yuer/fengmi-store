@@ -6,6 +6,7 @@ import com.qf.entity.Order;
 import com.qf.service.OrderService;
 
 import java.util.List;
+import java.util.Map;
 
 public class OrderServiceImpl implements OrderService {
 
@@ -69,4 +70,9 @@ public class OrderServiceImpl implements OrderService {
     public Order getOrderById(int id) {
         return orderDao.getOrderById(id);
     }
+
+    /*public List<Map<String, Object>> getOrderListDetail(long uid, int num) {
+        OrderDaoImpl orderDao = (OrderDaoImpl) this.orderDao;
+        return orderDao.getOrderListDetail(uid, num);
+    }*/
 }
