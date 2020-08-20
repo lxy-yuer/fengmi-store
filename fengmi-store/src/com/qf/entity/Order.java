@@ -14,6 +14,24 @@ public class Order {
     private double maney;
     private int flag = 1;
 
+    public Order(int uid, int uaid, int gid, String createTime, double maney, int flag) {
+        this.uid = uid;
+        this.uaid = uaid;
+        this.gid = gid;
+        this.createTime = createTime;
+        this.maney = maney;
+        this.flag = flag;
+    }
+
+    public Order(int id, int uid, int uaid, int gid, String createTime, double maney, int flag) {
+        this.id = id;
+        this.uid = uid;
+        this.uaid = uaid;
+        this.gid = gid;
+        this.createTime = createTime;
+        this.maney = maney;
+        this.flag = flag;
+    }
 
     public Order() {
         super();
@@ -33,6 +51,14 @@ public class Order {
 
     public void setUid(int uid) {
         this.uid = uid;
+    }
+
+    public int getGid() {
+        return gid;
+    }
+
+    public void setGid(int gid) {
+        this.gid = gid;
     }
 
     public int getUaid() {
