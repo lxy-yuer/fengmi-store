@@ -6,6 +6,7 @@ import com.qf.entity.OrderDetail;
 import com.qf.service.OrderDetailService;
 
 import java.util.List;
+import java.util.Map;
 
 public class OrderDetailServiceImpl implements OrderDetailService {
 
@@ -34,5 +35,10 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     @Override
     public OrderDetail selectOrderDetailById(int id) {
         return orderDetailDao.selectOrderDetailById(id);
+    }
+
+    @Override
+    public List<Map<String, Object>> getOrderDetailList(String username) {
+        return orderDetailDao.getOrderDetailList(username);
     }
 }

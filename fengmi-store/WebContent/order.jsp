@@ -74,8 +74,6 @@
                             <td>${order.get("num")}</td>
                             <td>${order.get("money")}</td>
                         </tr>
-
-
                     </c:forEach>
 
 

@@ -3,6 +3,7 @@ package com.qf.dao;
 import com.qf.entity.OrderDetail;
 
 import java.util.List;
+import java.util.Map;
 
 public interface OrderDetailDao {
     int addOrderDetail(OrderDetail orderDetail);
@@ -15,5 +16,5 @@ public interface OrderDetailDao {
 
     OrderDetail selectOrderDetailById(int id);
 
-
+    public List<Map<String, Object>> getOrderDetailList(String username);
 }

@@ -27,15 +27,18 @@ public class OrderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String aValue = request.getParameter("address");
         int uaid = Integer.parseInt(aValue);
-        for (int i = 0; i < orderList.size(); i++) {
-            int uid = (int) orderList.get(i).get("uid");
-            int gid = (int) orderList.get(i).get("gid");
-            double money = (double) orderList.get(i).get("money");
-            Order order = new Order(uid, uaid, DateUtils.toStringDate(new Date()), money);
-            System.out.println(order);
+        for (Map<String, Object> stringObjectMap : orderList) {
+            int uid = (int) stringObjectMap.get("uid");
+            int gid = (int) stringObjectMap.get("gid");
+            double money = (double) stringObjectMap.get("money");
+            Order order = new Order(uid, uaid, gid, DateUtils.toStringDate(new Date()), money);
+            int iFlag = service.addOrder(order);
+            if (iFlag == 1) {
+                System.out.println(order);
+                System.out.println("添加订单成功");
+            }
         }
-
-        Order order = new Order();
+        response.sendRedirect("./orderDetailServlet");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

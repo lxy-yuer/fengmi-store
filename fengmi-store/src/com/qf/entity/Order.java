@@ -11,25 +11,24 @@ public class Order {
     private int uaid;
     private int gid;
     private String createTime;
-    private double maney;
-    private int flag = 1;
+    private double money;
+    private int flag = 2;
 
-    public Order(int uid, int uaid, int gid, String createTime, double maney, int flag) {
+    public Order(int uid, int uaid, int gid, String createTime, double money) {
         this.uid = uid;
         this.uaid = uaid;
         this.gid = gid;
         this.createTime = createTime;
-        this.maney = maney;
-        this.flag = flag;
+        this.money = money;
     }
 
-    public Order(int id, int uid, int uaid, int gid, String createTime, double maney, int flag) {
+    public Order(int id, int uid, int uaid, int gid, String createTime, double money, int flag) {
         this.id = id;
         this.uid = uid;
         this.uaid = uaid;
         this.gid = gid;
         this.createTime = createTime;
-        this.maney = maney;
+        this.money = money;
         this.flag = flag;
     }
 
@@ -77,12 +76,12 @@ public class Order {
         this.createTime = createTime;
     }
 
-    public double getManey() {
-        return maney;
+    public double getMoney() {
+        return money;
     }
 
-    public void setManey(double maney) {
-        this.maney = maney;
+    public void setMoney(double money) {
+        this.money = money;
     }
 
     public int getFlag() {
@@ -95,8 +94,14 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order [id=" + id + ", uid=" + uid + ", uaid=" + uaid + ", createTime=" + createTime + ", maney=" + maney
-                + ", flag=" + flag + "]";
+        return "Order{" +
+                "id=" + id +
+                ", uid=" + uid +
+                ", uaid=" + uaid +
+                ", gid=" + gid +
+                ", createTime='" + createTime + '\'' +
+                ", money=" + money +
+                ", flag=" + flag +
+                '}';
     }
-
 }

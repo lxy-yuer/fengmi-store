@@ -20,18 +20,18 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public int addOrder(Order order) {
-        return dbUtils.updateData("insert into t_order(id, uid, uaid, createtime, money, flag) values(?, ?, ?, ?, ?, ?)",
-                order.getId(), order.getUid(),
+        return dbUtils.updateData("insert into t_order(uid, gid, uaid, createtime, money, flag) values( ?, ?, ?, ?, ?, ?)",
+                order.getUid(), order.getGid(),
                 order.getUaid(), order.getCreateTime(),
-                order.getManey(), order.getFlag());
+                order.getMoney(), order.getFlag());
     }
 
     @Override
     public int updateOrder(Order order) {
-        return dbUtils.updateData("update t_order set id=?, uid=?, uaid=?, createtime=?, money=?, flag=?",
-                order.getId(), order.getUid(),
+        return dbUtils.updateData("update t_order set uid=?, uaid=?, createtime=?, money=?, flag=?",
+                order.getUid(),
                 order.getUaid(), order.getCreateTime(),
-                order.getManey(), order.getFlag());
+                order.getMoney(), order.getFlag());
     }
 
     @Override

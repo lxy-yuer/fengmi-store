@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -55,17 +56,32 @@
                             <th>购买数量</th>
                             <th>小计</th>
                         </tr>
+
+                            <c:forEach items="${orderDetailList}" var="orderDetail" varStatus="status" begin="0">
                         <tr align="center">
-                            <th>xxx</th>
-                            <th>
-                                <img src="" width="50px" height="50px">
-                            </th>
-                            <th>xxx</th>
-                            <th>xxx</th>
-                            <th>xxx</th>
-                            <th>xxx</th>
-                            <th>xxx</th>
-                            <th>xxxx</th>
+                            <td>${status.index + 1}</td>
+                            <td>
+                                <img src="${orderDetail.get("picture")}" width="50px" height="50px" alt="img">
+                            </td>
+                            <td>${orderDetail.get("name")}</td>
+                            <td>${orderDetail.get("star")}</td>
+                            <td>${orderDetail.get("pubdate")}</td>
+                            <td>${orderDetail.get("price")}</td>
+                            <td>${orderDetail.get("num")}</td>
+                            <td>${orderDetail.get("money")}</td>
+                        </tr>
+                        </c:forEach>
+                        <tr align="center">
+                        <td>111</td>
+                        <td>
+                            <img src="" width="50px" height="50px">
+                        </td>
+                        <td>xxx</td>
+                        <td>xxx</td>
+                        <td>xxx</td>
+                        <td>xxx</td>
+                        <td>xxx</td>
+                        <td>xxxx</td>
                         </tr>
                     </table>
                 </td>
@@ -73,9 +89,7 @@
             <tr>
                 <td align="right" colspan="4" style="margin-right: 40px;">
                     <a href="" class="btn btn-danger btn-sm">返回订单列表</a>
-                    &nbsp;&nbsp;
                     <button type="button" class="btn btn-warning btn-sm">支付</button>
-                    </c:if>
                 </td>
             </tr>
         </table>
