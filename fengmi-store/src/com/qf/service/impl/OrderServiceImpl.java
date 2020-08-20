@@ -71,8 +71,9 @@ public class OrderServiceImpl implements OrderService {
         return orderDao.getOrderById(id);
     }
 
-    /*public List<Map<String, Object>> getOrderListDetail(long uid, int num) {
+    @Override
+    public List<Map<String, Object>> getOrderList(String username) {
         OrderDaoImpl orderDao = (OrderDaoImpl) this.orderDao;
-        return orderDao.getOrderListDetail(uid, num);
-    }*/
+        return orderDao.getOrderList(username);
+    }
 }

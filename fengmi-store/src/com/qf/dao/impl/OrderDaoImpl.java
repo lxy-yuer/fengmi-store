@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.RowMapper;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -54,42 +53,33 @@ public class OrderDaoImpl implements OrderDao {
     /**
      * 使用RowMapper获取临时对象，将数据存储在Map中并返回一个List
      *
-     * @param uid
-     * @param num
+     * @param username
      * @return List<Map < String, Object>>
      */
-    /*public List<Map<String, Object>> getOrderListDetail(long uid, int num) {
+    @Override
+    public List<Map<String, Object>> getOrderList(String username) {
         DataSource ds = dbUtils.getDS();
         JdbcTemplate jdbcTemplate = new JdbcTemplate(ds);
-        String sql = "select" +
-                " t2.name as gooodsName," +
-                " t2.price," +
-                " ( @i :=" + num + ")num," +
-                " ( " + num + " * t2.price ) as goodsPrice," +
-                " t3.address_detail as addressDetail " +
-                " from" +
-                " t_order t1" +
-                " inner join t_goods t2 on t1.gid = t2.id" +
-                " inner join t_useraddress t3 on t1.uid = t3.uid where t1.uid = ?";
+        String sql = "select t3.name,t3.price,t2.num,t2.money,t1.uid,t2.gid from t_cart t1 inner join t_cartdetail t2 on t1.id=t2.cid inner join t_goods t3 on t2.gid=t3.id inner join t_user t4 on t1.uid=t4.id where t4.username=?;";
         //实例化一个RowMapper接口对象，需要实现他未实现的方法
         RowMapper<Map<String, Object>> rowMapper = new RowMapper<Map<String, Object>>() {
             @Override
             public Map<String, Object> mapRow(ResultSet resultSet, int i) throws SQLException {
                 Map<String, Object> map = new TreeMap<>();
-                map.put("goodsName", resultSet.getString("gooodsName"));
+                map.put("name", resultSet.getString("name"));
                 map.put("price", resultSet.getDouble("price"));
                 map.put("num", resultSet.getInt("num"));
-                map.put("goodsPrice", resultSet.getDouble("goodsPrice"));
-                map.put("addressDetail", resultSet.getString("addressDetail"));
+                map.put("money", resultSet.getDouble("money"));
+                map.put("uid", resultSet.getInt("uid"));
+                map.put("gid", resultSet.getInt("gid"));
                 return map;
             }
         };
         try {
-            return jdbcTemplate.query(sql, rowMapper, uid);
+            return jdbcTemplate.query(sql, rowMapper, username);
         } catch (DataAccessException e) {
             e.printStackTrace();
         }
         return null;
-    }*/
-
+    }
 }

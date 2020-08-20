@@ -9,35 +9,11 @@ public class Order {
     private int id;
     private int uid;
     private int uaid;
+    private int gid;
     private String createTime;
     private double maney;
     private int flag = 1;
 
-    public Order(int uid, int uaid, String createTime, double maney) {
-        this.uid = uid;
-        this.uaid = uaid;
-        this.createTime = createTime;
-        this.maney = maney;
-    }
-
-    public Order(int id, int uid, int uaid, String createTime, double maney, int flag) {
-        super();
-        this.id = id;
-        this.uid = uid;
-        this.uaid = uaid;
-        this.createTime = createTime;
-        this.maney = maney;
-        this.flag = flag;
-    }
-
-    public Order(int uid, int uaid, String createTime, double maney, int flag) {
-        super();
-        this.uid = uid;
-        this.uaid = uaid;
-        this.createTime = createTime;
-        this.maney = maney;
-        this.flag = flag;
-    }
 
     public Order() {
         super();

@@ -14,4 +14,6 @@ public interface OrderDetailDao {
     List<OrderDetail> selectOrderDetail(int oid);
 
     OrderDetail selectOrderDetailById(int id);
+
+
 }

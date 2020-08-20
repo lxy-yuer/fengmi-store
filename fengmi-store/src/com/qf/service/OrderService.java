@@ -3,6 +3,7 @@ package com.qf.service;
 import com.qf.entity.Order;
 
 import java.util.List;
+import java.util.Map;
 
 public interface OrderService {
     /**
@@ -44,4 +45,6 @@ public interface OrderService {
      * @return -
      */
     Order getOrderById(int id);
+
+    public List<Map<String, Object>> getOrderList(String username);
 }
