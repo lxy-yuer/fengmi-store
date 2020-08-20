@@ -1,9 +1,13 @@
 package com.qf.servlet;
 
+import com.qf.entity.User;
+import com.qf.entity.UserAddress;
 import com.qf.service.OrderDetailService;
 import com.qf.service.UserAddressService;
+import com.qf.service.UserService;
 import com.qf.service.impl.OrderDetailServiceImpl;
 import com.qf.service.impl.UserAddressServiceImpl;
+import com.qf.service.impl.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +22,7 @@ import java.util.Map;
 public class OrderDetailServlet extends HttpServlet {
     OrderDetailService service = new OrderDetailServiceImpl();
     UserAddressService addrService = new UserAddressServiceImpl();
+    UserService userService = new UserServiceImpl();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -25,8 +30,10 @@ public class OrderDetailServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Map<String, Object>> orderDetailList = service.getOrderDetailList("admin");
-        addrService.selectAddressByUid(1);
+        User user = userService.QueryUser("admin");
+        List<UserAddress> userAddressList = addrService.selectAddressByUid(user.getId());
+        System.out.println(userAddressList);
         request.setAttribute("orderDetailList", orderDetailList);
-        request.getRequestDispatcher("orderDetail.jsp").forward(request,response);
+        request.getRequestDispatcher("orderDetail.jsp").forward(request, response);
     }
 }
