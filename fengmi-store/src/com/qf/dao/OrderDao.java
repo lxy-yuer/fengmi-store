@@ -48,4 +48,5 @@ public interface OrderDao {
 
     public List<Map<String, Object>> getOrderList(String username);
 
+    Order getOrderByUid(int id);
 }

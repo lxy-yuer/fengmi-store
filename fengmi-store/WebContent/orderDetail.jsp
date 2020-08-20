@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: liuxiangyu
   Date: 2020-08-20
@@ -13,6 +14,14 @@
     <title>订单详情页</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.min.js"></script>
+    <% double lastMoney = 0;
+        Object od = request.getAttribute("orderDetailList");
+        List<Map<String, Object>> list = (List<Map<String, Object>>) od;
+        for (Map<String, Object> map : list) {
+            lastMoney += (Double) map.get("money");
+        }
+        request.setAttribute("lastMoney", lastMoney);
+    %>
 
 </head>
 <div class="panel panel-default" style="margin: 0 auto;width: 95%;">
@@ -25,21 +34,21 @@
 
             <tr>
                 <td>订单编号:</td>
-                <td>XX</td>
+                <td>${orderId}</td>
                 <td>订单时间:</td>
-                <td>xxx</td>
+                <td>${createTime}</td>
             </tr>
             <tr>
                 <td>收件人:</td>
-                <td>xxx</td>
+                <td>${addressDetail[0]}</td>
                 <td>联系电话:</td>
-                <td>xxx</td>
+                <td>${addressDetail[2]}</td>
             </tr>
             <tr>
                 <td>送货地址:</td>
-                <td>xxx</td>
+                <td>${addressDetail[1]}</td>
                 <td>总价:</td>
-                <td>xxx</td>
+                <td>${lastMoney}</td>
             </tr>
             <tr>
                 <td align="center">商品列表:</td>
@@ -57,38 +66,26 @@
                             <th>小计</th>
                         </tr>
 
-                            <c:forEach items="${orderDetailList}" var="orderDetail" varStatus="status" begin="0">
-                        <tr align="center">
-                            <td>${status.index + 1}</td>
-                            <td>
-                                <img src="${orderDetail.get("picture")}" width="50px" height="50px" alt="img">
-                            </td>
-                            <td>${orderDetail.get("name")}</td>
-                            <td>${orderDetail.get("star")}</td>
-                            <td>${orderDetail.get("pubdate")}</td>
-                            <td>${orderDetail.get("price")}</td>
-                            <td>${orderDetail.get("num")}</td>
-                            <td>${orderDetail.get("money")}</td>
-                        </tr>
+                        <c:forEach items="${orderDetailList}" var="orderDetail" varStatus="status" begin="0">
+                            <tr align="center">
+                                <td>${status.index + 1}</td>
+                                <td>
+                                    <img src="${orderDetail.get("picture")}" width="50px" height="50px" alt="img">
+                                </td>
+                                <td>${orderDetail.get("name")}</td>
+                                <td>${orderDetail.get("star")}</td>
+                                <td>${orderDetail.get("pubdate")}</td>
+                                <td>${orderDetail.get("price")}</td>
+                                <td>${orderDetail.get("num")}</td>
+                                <td>${orderDetail.get("money")}</td>
+                            </tr>
                         </c:forEach>
-                        <tr align="center">
-                        <td>111</td>
-                        <td>
-                            <img src="" width="50px" height="50px">
-                        </td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxx</td>
-                        <td>xxxx</td>
-                        </tr>
                     </table>
                 </td>
             </tr>
             <tr>
                 <td align="right" colspan="4" style="margin-right: 40px;">
-                    <a href="" class="btn btn-danger btn-sm">返回订单列表</a>
+                    <a href="./order" id="back" class="btn btn-danger btn-sm">返回订单列表</a>
                     <button type="button" class="btn btn-warning btn-sm">支付</button>
                 </td>
             </tr>

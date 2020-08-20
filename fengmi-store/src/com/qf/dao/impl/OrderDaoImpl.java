@@ -82,4 +82,9 @@ public class OrderDaoImpl implements OrderDao {
         }
         return null;
     }
+
+    @Override
+    public Order getOrderByUid(int uid) {
+        return dbUtils.querySingle("select * from t_order where uid = ?",Order.class , uid);
+    }
 }

@@ -76,4 +76,9 @@ public class OrderServiceImpl implements OrderService {
         OrderDaoImpl orderDao = (OrderDaoImpl) this.orderDao;
         return orderDao.getOrderList(username);
     }
+
+    @Override
+    public Order getOrderByUid(int uid) {
+        return orderDao.getOrderByUid(uid);
+    }
 }
