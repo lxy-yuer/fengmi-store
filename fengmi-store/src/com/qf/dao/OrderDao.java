@@ -51,4 +51,6 @@ public interface OrderDao {
     Order getOrderByUid(int id);
 
     Order getOrderByLastUid(int uid);
+
+    Order getOrderByLastUidLimit(int id, int limit);
 }

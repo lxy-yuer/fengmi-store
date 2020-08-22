@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -26,6 +27,9 @@ public class OrderServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String aValue = request.getParameter("address");
+        String listSize = request.getParameter("listSize");
+        HttpSession session = request.getSession();
+            session.setAttribute("listSize", listSize);
         int uaid = Integer.parseInt(aValue);
         for (Map<String, Object> stringObjectMap : orderList) {
             int uid = (int) stringObjectMap.get("uid");

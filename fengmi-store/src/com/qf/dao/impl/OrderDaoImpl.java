@@ -28,10 +28,11 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public int updateOrder(Order order) {
-        return dbUtils.updateData("update t_order set uaid=?, money=?, flag=?",
+        return dbUtils.updateData("update t_order set uaid=?, money=?, flag=? where id = ?",
                 order.getUaid(),
                 order.getMoney(),
-                order.getFlag());
+                order.getFlag(),
+                order.getId());
     }
 
     @Override
@@ -41,7 +42,7 @@ public class OrderDaoImpl implements OrderDao {
 
     @Override
     public List<Order> getOrderListByUid(int uid) {
-        return dbUtils.queryList("select * from t_order where uid = ?", Order.class, uid);
+        return dbUtils.queryList("select * from t_order where uid = ? and flag = 2", Order.class, uid);
     }
 
     @Override
@@ -91,5 +92,10 @@ public class OrderDaoImpl implements OrderDao {
     @Override
     public Order getOrderByLastUid(int uid) {
         return dbUtils.querySingle("select * from t_order where uid = ? order by id desc limit 1", Order.class, uid);
+    }
+
+    @Override
+    public Order getOrderByLastUidLimit(int uid, int limit) {
+        return dbUtils.querySingle("select * from t_order where uid = ? order by id desc limit ?", Order.class, uid, limit);
     }
 }

@@ -11,15 +11,14 @@ import com.qf.service.impl.OrderDetailServiceImpl;
 import com.qf.service.impl.OrderServiceImpl;
 import com.qf.service.impl.UserAddressServiceImpl;
 import com.qf.service.impl.UserServiceImpl;
-import com.qf.util.DateUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -35,6 +34,7 @@ public class OrderDetailServlet extends HttpServlet {
         String flag = request.getParameter("flag");
         String orderId = request.getParameter("orderId");
         Order order = orderService.getOrderById(Integer.parseInt(orderId));
+        System.out.println(order);
         if (order != null) {
             order.setFlag(Integer.parseInt(flag));
             int i = orderService.updateOrder(order);
@@ -43,7 +43,13 @@ public class OrderDetailServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Map<String, Object>> orderDetailList = service.getOrderDetailList("admin");
+        HttpSession session = request.getSession();
+        String listSize = "1";
+        if (session != null) {
+            listSize = (String) session.getAttribute("listSize");
+        }
+        List<Map<String, Object>> orderDetailList = service.getOrderDetailListLimit("admin", Integer.parseInt(listSize));
+        System.out.println(orderDetailList);
         User user = userService.QueryUser("admin");
         Order order = orderService.getOrderByLastUid(user.getId());
         int orderId = order.getId();
@@ -59,7 +65,6 @@ public class OrderDetailServlet extends HttpServlet {
         request.setAttribute("orderDetailList", orderDetailList);
         request.setAttribute("orderId", orderId);
         request.setAttribute("createTime", order.getCreateTime());
-
         request.getRequestDispatcher("orderDetail.jsp").forward(request, response);
     }
 }

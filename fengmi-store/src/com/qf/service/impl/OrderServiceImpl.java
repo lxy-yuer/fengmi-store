@@ -85,4 +85,9 @@ public class OrderServiceImpl implements OrderService {
     public Order getOrderByLastUid(int uid) {
         return orderDao.getOrderByLastUid(uid);
     }
+
+    @Override
+    public Order getOrderByLastUidLimit(int id, int limit) {
+        return orderDao.getOrderByLastUidLimit(id, limit);
+    }
 }

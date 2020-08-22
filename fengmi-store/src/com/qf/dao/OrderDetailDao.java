@@ -17,4 +17,6 @@ public interface OrderDetailDao {
     OrderDetail selectOrderDetailById(int id);
 
     public List<Map<String, Object>> getOrderDetailList(String username);
+
+    public List<Map<String, Object>> getOrderDetailList(String username, int limit);
 }

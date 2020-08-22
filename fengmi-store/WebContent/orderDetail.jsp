@@ -8,9 +8,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="header.jsp" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>订单详情页</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -34,6 +35,16 @@
                 $.post("orderDetail", {flag: '1', orderId: '<%--${orderId}--%>'}, "json");
             });
         });*/
+        $(function () {
+            if (window.history && window.history.pushState) {
+                $(window).on('popstate', function () {
+                    window.history.pushState('forward', null, '');
+                    window.history.forward(1);
+                });
+            }
+            window.history.pushState('forward', null, '');
+            window.history.forward(1);
+        })
     </script>
 
 </head>

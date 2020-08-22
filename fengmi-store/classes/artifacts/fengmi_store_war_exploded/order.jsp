@@ -10,9 +10,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="header.jsp" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>订单预览页面</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -50,9 +50,8 @@
                         <th>小计</th>
 
                     </tr>
-
+                    <input name="listSize" type="hidden" value="${list.size()}"/>
                     <c:forEach items="${list}" varStatus="status" var="order" begin="0">
-
                         <tr>
                             <td>${status.index + 1}</td>
                             <td>${order.get("name")}</td>

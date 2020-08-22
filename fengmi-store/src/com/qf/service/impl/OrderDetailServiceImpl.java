@@ -41,4 +41,9 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     public List<Map<String, Object>> getOrderDetailList(String username) {
         return orderDetailDao.getOrderDetailList(username);
     }
+
+    @Override
+    public List<Map<String, Object>> getOrderDetailListLimit(String username, int limit) {
+        return orderDetailDao.getOrderDetailList(username, limit);
+    }
 }

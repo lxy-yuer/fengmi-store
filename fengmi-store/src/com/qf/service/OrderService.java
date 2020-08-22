@@ -51,4 +51,6 @@ public interface OrderService {
     Order getOrderByUid(int uid);
 
     Order getOrderByLastUid(int uid);
+
+    Order getOrderByLastUidLimit(int id, int limit);
 }

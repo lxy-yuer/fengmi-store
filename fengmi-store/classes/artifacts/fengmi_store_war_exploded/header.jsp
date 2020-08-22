@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/login2.css">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -41,7 +40,7 @@
 			<!-- 根据ajax 回调函数 填写数据 到此id中 -->
         </p>
        <form  class="form-inline pull-right" style="clear:both;margin-right: 10px;margin-bottom: 3px;">
-		
+
 		  <div class="form-group" >
 		    <input type="text" class="form-control" style="width: 400px"  placeholder="幸福生活，搜索一下...">
 		  </div>

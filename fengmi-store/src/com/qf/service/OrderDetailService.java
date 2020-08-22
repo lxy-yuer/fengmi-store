@@ -17,4 +17,6 @@ public interface OrderDetailService {
     OrderDetail selectOrderDetailById(int id);
 
     public List<Map<String, Object>> getOrderDetailList(String username);
+
+    List<Map<String, Object>> getOrderDetailListLimit(String admin, int limit);
 }
