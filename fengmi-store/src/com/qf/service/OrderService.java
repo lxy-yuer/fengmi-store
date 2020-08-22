@@ -49,4 +49,6 @@ public interface OrderService {
     public List<Map<String, Object>> getOrderList(String username);
 
     Order getOrderByUid(int uid);
+
+    Order getOrderByLastUid(int uid);
 }

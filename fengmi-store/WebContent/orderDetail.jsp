@@ -14,19 +14,32 @@
     <title>订单详情页</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.min.js"></script>
-    <% double lastMoney = 0;
+    <%
+        double lastMoney = 0;
+        int num = 0;
         Object od = request.getAttribute("orderDetailList");
         List<Map<String, Object>> list = (List<Map<String, Object>>) od;
         for (Map<String, Object> map : list) {
             lastMoney += (Double) map.get("money");
+            num += (int) map.get("num");
         }
         request.setAttribute("lastMoney", lastMoney);
+        request.setAttribute("num", num);
+        request.setAttribute("list", list);
     %>
+
+    <script type="text/javascript">
+        /*$(function () {
+            $("#back").click(function () {
+                $.post("orderDetail", {flag: '1', orderId: '<%--${orderId}--%>'}, "json");
+            });
+        });*/
+    </script>
 
 </head>
 <div class="panel panel-default" style="margin: 0 auto;width: 95%;">
     <div class="panel-heading">
-        <h3 class="panel-title"><span class="glyphicon glyphicon-equalizer"></span>&nbsp;&nbsp;订单详情</h3>
+        <h3 class="panel-title"><span class="glyphicon glyphicon-equalizer"></span>订单详情</h3>
     </div>
     <div class="panel-body">
         <table cellpadding="0" cellspacing="0" align="center" width="100%"
@@ -85,8 +98,22 @@
             </tr>
             <tr>
                 <td align="right" colspan="4" style="margin-right: 40px;">
-                    <a href="./order" id="back" class="btn btn-danger btn-sm">返回订单列表</a>
-                    <button type="button" class="btn btn-warning btn-sm">支付</button>
+                    <%--<a href="" id="back" class="btn btn-danger btn-sm">返回订单列表</a>--%>
+                    <form action="orderDetail" method="post">
+                        <input type="hidden" name="flag" value="1">
+                        <input type="hidden" name="orderId" value="${orderId}">
+                        <input type="submit" class="btn btn-danger btn-sm" value="返回订单列表">
+                    </form>
+                    <form action="orderList" method="post">
+                        <%--<button type="button" class="btn btn-warning btn-sm">支付</button>--%>
+                        <input type="hidden" name="orderId" value="${orderId}">
+                        <input type="hidden" name="lastMoney" value="${lastMoney}">
+                        <input type="hidden" name="num" value="${num}">
+                        <input type="hidden" name="createTime" value="${createTime}">
+                        <input type="hidden" name="addressDetail" value="${addressDetail[1]}">
+                        <input type="hidden" name="gid" value="${list.get(0).get("gid")}">
+                        <input type="submit" class="btn btn-danger btn-sm" value="支付">
+                    </form>
                 </td>
             </tr>
         </table>

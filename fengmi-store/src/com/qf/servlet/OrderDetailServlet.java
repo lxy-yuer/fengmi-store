@@ -30,25 +30,36 @@ public class OrderDetailServlet extends HttpServlet {
     UserService userService = new UserServiceImpl();
     OrderService orderService = new OrderServiceImpl();
 
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String flag = request.getParameter("flag");
-        System.out.println(flag);
+        String orderId = request.getParameter("orderId");
+        Order order = orderService.getOrderById(Integer.parseInt(orderId));
+        if (order != null) {
+            order.setFlag(Integer.parseInt(flag));
+            int i = orderService.updateOrder(order);
+        }
+        response.sendRedirect("./order");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Map<String, Object>> orderDetailList = service.getOrderDetailList("admin");
         User user = userService.QueryUser("admin");
-        Order order = orderService.getOrderByUid(user.getId());
+        Order order = orderService.getOrderByLastUid(user.getId());
         int orderId = order.getId();
-        List<UserAddress> userAddressList = addrService.selectAddressByUid(user.getId());
         int uaid = order.getUaid();
         UserAddress userAddressObj = addrService.selectAddress(uaid);
-        String[] addressDetail = userAddressObj.getAddress_detail().split("-");
+        if (userAddressObj != null) {
+            String[] addressDetail = userAddressObj.getAddress_detail().split("-");
+            request.setAttribute("addressDetail", addressDetail);
+        } else {
+            request.setAttribute("addressDetail", "请去用户中心添加地址");
+            //判断如果addressDetail为空的话提示用户添加地址
+        }
         request.setAttribute("orderDetailList", orderDetailList);
         request.setAttribute("orderId", orderId);
-        String createTime = DateUtils.toStringDate(new Date());
-        request.setAttribute("createTime", createTime);
-        request.setAttribute("addressDetail", addressDetail);
+        request.setAttribute("createTime", order.getCreateTime());
+
         request.getRequestDispatcher("orderDetail.jsp").forward(request, response);
     }
 }

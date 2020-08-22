@@ -13,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -33,12 +32,10 @@ public class OrderServlet extends HttpServlet {
             int gid = (int) stringObjectMap.get("gid");
             double money = (double) stringObjectMap.get("money");
             Order order = new Order(uid, uaid, gid, DateUtils.toStringDate(new Date()), money);
-           /* int iFlag = service.addOrder(order);
-            if (iFlag == 1) {
-                System.out.println(order);
-                System.out.println("添加订单成功");
-            }*/
-            HttpSession session = request.getSession();
+            int iFlag = service.addOrder(order);
+            if (iFlag == 0) {
+                System.out.println("添加订单失败");
+            }
         }
         response.sendRedirect("./orderDetail");
     }
@@ -53,6 +50,6 @@ public class OrderServlet extends HttpServlet {
             request.setAttribute("userAddressList", userAddressList);
         }
         request.setAttribute("orderList", orderList);
-        request.getRequestDispatcher("order.jsp").forward(request, response);
+        request.getRequestDispatcher("./order.jsp").forward(request, response);
     }
 }

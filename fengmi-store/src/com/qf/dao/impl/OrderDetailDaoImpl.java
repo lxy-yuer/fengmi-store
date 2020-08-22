@@ -54,18 +54,19 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
     public List<Map<String, Object>> getOrderDetailList(String username) {
         DataSource ds = dbUtils.getDS();
         JdbcTemplate jdbcTemplate = new JdbcTemplate(ds);
-        String sql = "select t1.picture,t1.name,t1.star,t1.pubdate,t1.price,t2.num,t3.money " +
+        String sql = "select t1.picture, t3.gid, t1.name,t1.star,t1.pubdate,t1.price,t2.num,t3.money " +
                 "from t_goods t1 " +
                 "inner join t_cartdetail t2 on t1.id=t2.gid " +
                 "inner join t_order t3 on t3.gid=t1.id " +
                 "inner join t_user t4 on t4.id=t3.uid" +
-                " where t4.username = ? ";
+                " where t4.username = ?  and t3.flag = ?";
         //实例化一个RowMapper接口对象，需要实现他未实现的方法
         RowMapper<Map<String, Object>> rowMapper = new RowMapper<Map<String, Object>>() {
             @Override
             public Map<String, Object> mapRow(ResultSet resultSet, int i) throws SQLException {
                 Map<String, Object> map = new TreeMap<>();
                 map.put("picture", resultSet.getString("picture"));
+                map.put("gid", resultSet.getString("gid"));
                 map.put("name", resultSet.getString("name"));
                 map.put("star", resultSet.getInt("star"));
                 map.put("pubdate", resultSet.getString("pubdate"));
@@ -76,7 +77,7 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
             }
         };
         try {
-            return jdbcTemplate.query(sql, rowMapper, username);
+            return jdbcTemplate.query(sql, rowMapper, username, 2);
         } catch (DataAccessException e) {
             e.printStackTrace();
         }

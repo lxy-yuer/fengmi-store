@@ -23,7 +23,6 @@ public class OrderServiceImpl implements OrderService {
         if (order == null) {
             return -1;
         }
-
         return orderDao.addOrder(order);
     }
 
@@ -80,5 +79,10 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Order getOrderByUid(int uid) {
         return orderDao.getOrderByUid(uid);
+    }
+
+    @Override
+    public Order getOrderByLastUid(int uid) {
+        return orderDao.getOrderByLastUid(uid);
     }
 }

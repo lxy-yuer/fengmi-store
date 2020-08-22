@@ -16,20 +16,6 @@
     <title>订单预览页面</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript">
-
-        $(function () {
-            $("#btn_add").click(function () {
-                $.post({
-                    url: "order",
-                    data: {
-                        lastMoney: $("#lastMoney").text(),
-                    }
-                });
-            });
-        });
-
-    </script>
     <%
         Object orderList = request.getAttribute("orderList");
         List<Map<String, Object>> list = (List<Map<String, Object>>) orderList;
@@ -82,7 +68,6 @@
                             <h5><label for="address">收货地址</label></h5>
                             <select id="address" name="address" style="width:60%" class="form-control">
                                 <c:if test="${!(addressList.size() eq 0)}">
-                                    <option value="0">请选择地址...</option>
                                     <c:forEach items="${addressList}" var="addr">
                                         <option value="${addr.id}">${addr.address_detail}</option>
                                     </c:forEach>
